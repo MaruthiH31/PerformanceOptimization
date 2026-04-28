@@ -84,3 +84,32 @@ The biggest gains did not come from optimizing code, but from placing the logic 
 This pattern consistently delivers **predictable and scalable performance** in real-world systems.
 
 #Qt #QML #Performance #CPlusPlus #SoftwareEngineering #HMI #EmbeddedSystems
+
+
+###Commands:
+
+./appName -qmljsdebugger=port:3768,block    
+    // block → app waits until profiler connects (useful to analyse from the beginning of app run)
+    // Remove block if you want it to start immediately
+    
+    
+#### Step to Connect from Qt Creator
+
+Open Analyze → QML Profiler
+Click Attach to Running Application
+Enter:
+Device IP
+Port (e.g., 3768)
+
+
+#Firewall on device
+
+Open port if needed:
+sudo ufw allow 3768
+
+#Binding to correct interface
+
+Sometimes app binds only to localhost.
+
+Force it:
+./appName -qmljsdebugger=port:3768,host:0.0.0.0,block
